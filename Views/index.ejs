@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 20px;
+}
+
+h1{
+    color: yellow;
+}
+
+form{
+    margin: 20px 0;
+}
+
+button{
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: aquamarine;
+}
+    </style>
+</head>
+<body>
+    <h1>MY BLOG</h1>
+    <a href="/new">Create New Post</a>
+    <ul>
+        <% posts.forEach((post, index) =>{ %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p><%= post.content%></p>
+                <a href="/edit/<%= index %>">Edit</a>
+                <form action="/delete/<%= index %>?_method=DELETE" method="post" style="display: inline;">
+                <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    
+</body>
+</html>
